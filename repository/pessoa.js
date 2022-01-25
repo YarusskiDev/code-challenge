@@ -58,11 +58,11 @@ module.exports = {
     const destinatario = await modelPessoa
       .findOne({ where: { id: idDestinatario } });
 
-      console.log(remetente.saldo);
+  
 
     if (remetente && destinatario) {
       remetente.saldo -= transferir;
-      console.log(remetente.saldo);
+ 
       if (remetente.saldo >= 0) {
         remetente.update({
           saldo: remetente.saldo,

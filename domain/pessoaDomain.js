@@ -50,10 +50,10 @@ module.exports = {
     this.idRemetente = parseInt(idRemetente);
     this.Valor = parseFloat(Valor);
     this.idDestinatario = parseInt(idDestinatario);
-    console.log(this.idRemetente, this.Valor, this.idDestinatario + "camada domain")
+   
 
     const response = await repoPessoa.transferir(this.idRemetente, this.Valor, this.idDestinatario);
-    console.log(response)
+ 
     return response;
   },
 

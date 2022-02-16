@@ -2,8 +2,13 @@ const modelPessoa = require("../Controllers/modelPessoa");
 
 module.exports = {
   async buscarUm(id) {
-    const response = await modelPessoa.findOne({where: { id: id }})
-    return response;
+    const usuario = await modelPessoa.findOne({where: { id: id }})
+    return usuario;
+  },
+
+  buscaTodos(){
+    const usuarios  = modelPessoa.findAll();
+    return usuarios;
   },
 
   async criarPessoa(nome, cpf, saldo) {

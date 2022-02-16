@@ -20,6 +20,16 @@ module.exports = {
   
   },
 
+  async ValidaTodos(){
+    const usuarios = repoPessoa.buscaTodos();
+    if(usuarios){
+      return usuarios;
+    }
+    else{
+      return {msg:"erro no servidor"}
+    }
+  },
+
   ValidaCpf(cpf) {
     return repoPessoa.buscarCpf(cpf);
   },

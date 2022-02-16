@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
-const pessoaController = require('./pessoas/PessoaController');
+const pessoaController = require('./Controllers/PessoaController');
 const pessoaRouter = require('./routes/pessoa');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

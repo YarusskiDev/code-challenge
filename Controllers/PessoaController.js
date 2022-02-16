@@ -1,7 +1,7 @@
 "use strict";
-const { Request, Response, response } = require("express");
+const { Request, Response } = require("express");
 const pessoaDomain = require("../domain/pessoaDomain");
-const modelPessoa = require("../pessoas/modelPessoa");
+const modelPessoa = require("./modelPessoa");
 
 module.exports = {
   async buscaTodos(Request, Response) {
@@ -10,9 +10,8 @@ module.exports = {
   },
 
   async buscaUm(Request, Response) {
-
     const response = await pessoaDomain.validaPessoa(Request.params.id);
-    Response.json(response);
+    return Response.json(response);
 
   },
 

@@ -1,20 +1,23 @@
 const repoPessoa = require("../repository/pessoa");
 
 module.exports = {
-  validaPessoa(id) {
-
+  async validaPessoa(id) {
     this.id = parseInt(id);
+    
+    if (typeof(this.id) === "number") {
+      const usuario = await repoPessoa.buscarUm(this.id);
+      if (usuario) {
+        return usuario;
+      }
+      else {
+        return { msgError: "Esse usuario não existe" };
+      }
+    }
+    else{
 
-    if (isNaN(this.id)) {
       return { msgErro: "dado inconsistente" }
     }
-    const response = repoPessoa.buscarUm(this.id);
-    if (response) {
-      return response;
-    }
-    else {
-      return { msgErro: "Erro do servidor" };
-    }
+  
   },
 
   ValidaCpf(cpf) {

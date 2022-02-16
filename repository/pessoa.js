@@ -1,22 +1,8 @@
-const modelPessoa = require("../pessoas/modelPessoa");
+const modelPessoa = require("../Controllers/modelPessoa");
 
 module.exports = {
   async buscarUm(id) {
-    const response = await modelPessoa
-      .findOne({
-        where: { id: id },
-      })
-      .then((pessoa) => {
-        if (pessoa != undefined && pessoa != null) {
-          return pessoa;
-        } else {
-          throw "esse usuario não existe";
-        }
-      })
-      .catch((e) => {
-        return { msgError: "Esse usuario não existe" };
-      });
-
+    const response = await modelPessoa.findOne({where: { id: id }})
     return response;
   },
 

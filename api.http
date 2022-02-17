@@ -1,1 +1,16 @@
 GET http://localhost:3000/pessoas/6
+
+###
+
+GET http://localhost:3000/pessoas
+
+###
+
+POST http://localhost:3000/pessoas
+Content-Type: application/json
+
+{
+	"nome":"Accursed",
+	"cpf":"89898129891928",
+    "saldo":500
+}

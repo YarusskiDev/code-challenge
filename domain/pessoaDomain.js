@@ -35,19 +35,23 @@ module.exports = {
   },
 
   async validaPessoaExistente({ nome, cpf, saldo }) {
-
-    this.nome = nome.toString();
+    this.nome = nome;
     this.cpf = parseInt(cpf);
     this.saldo = parseInt(saldo);
 
-    const responseCpf = await repoPessoa.buscarCpf(this.cpf);
+    if(typeof(this.nome)==="string" && typeof(this.cpf)==="number"&&typeof(this.saldo==="number")){
+      const responseCpf = await repoPessoa.buscarCpf(this.cpf);
 
-    if (responseCpf) {
-      return { msg: "esse CPF já tem uma conta!" }
+      if (responseCpf){
+        return { msg: "esse CPF já tem uma conta!" }
+      }
+      else{
+        return repoPessoa.criarPessoa(this.nome, this.cpf, this.saldo);
+      }
+    
     }
-    else {
-      return repoPessoa.criarPessoa(this.nome, this.cpf, this.saldo);
-    }
+
+
   },
 
   async validaEditar(id, nome) {

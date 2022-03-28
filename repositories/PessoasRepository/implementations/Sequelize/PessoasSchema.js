@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const connection = require("../database/database");
+const connection = require("../../../../database/database");
 
 const Pessoa = connection.define("Pessoas", {
   nome: {
@@ -24,5 +24,5 @@ const Pessoa = connection.define("Pessoas", {
   },
 });
 
-// Pessoa.sync({force:true});
+// Pessoa.sync({ force: true });
 module.exports = Pessoa;

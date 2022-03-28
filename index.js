@@ -1,13 +1,14 @@
-"use strict"
+"use strict";
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
-const pessoaController = require('./Controllers/PessoaController');
-const pessoaRouter = require('./routes/pessoa');
+const routes = require("./routes");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-const porta = 3000;
+const porta = process.env.APP_PORT || 3000;
 
 connection
   .authenticate()
@@ -18,8 +19,7 @@ connection
     console.log(msgError);
   });
 
-app.use('/',pessoaRouter);
-
+app.use(routes);
 
 app.listen(porta, () => {
   console.log("Api is working");
